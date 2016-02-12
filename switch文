@@ -1,0 +1,107 @@
+#include <stdio.h>
+
+int main(int argc, const char * argv[])
+
+{
+    //List3-17
+    /*
+    int num;
+    
+    printf("整数を入力してください:");
+    scanf("%d",&num);
+    
+    if(num%3==0)
+        puts("その数は3で割り切れます。");
+    
+    else if(num%3==1)
+        puts("その数を3で割った余りは1です。");
+    else
+        puts("その数を3で割った余りは2です。");
+     
+     */
+    
+    
+    //読み込んだ整数値を3で割った余りを表示(switch文)
+    //List3-18
+    /*
+    int num;
+    
+    printf("整数を入力してください:");
+    scanf("%d",&num);
+    
+    switch(num%3){
+        case 0 : puts("その数は3で割り切れます。");       break;
+        case 1 : puts("その数を3で割った余りは1です。");   break;
+        case 2 : puts("その数は3で割った余りは2です。");   break;
+     
+     }
+     
+     
+     */
+    
+    
+    //演習3-11
+    //読み込んだ整数値が奇数であるか偶数であるかを判断、表示するプログラム。
+    
+    
+    /*
+    int no;
+    
+    printf("整数を入力してください：");
+    scanf("%d",&no);
+    
+    switch(no%2){
+    
+        case 0 : puts("その数は2で割り切れます。"); break;
+        case 1 : puts("その数を2で割った余りは1です。"); break;
+            
+            
+            
+    }
+    
+     */
+     
+    
+     //演習3-12
+    //読み込んだ月の季節を表示するプログラム
+    
+
+    int month;
+    
+    printf("何月ですか？:");
+    scanf("%d",&month);
+    
+    switch(month){
+
+        case 12 :
+        case 1 :
+        case 2 : puts("冬です。"); break;
+        case 3 :
+        case 4 :
+        case 5 : puts("春です。"); break;
+        case 6 :
+        case 7 :
+        case 8 : puts("夏です。"); break;
+        case 9 :
+        case 10 :
+        case 11 : puts("秋です。"); break;
+
+        default: puts("そんな月はありません。");break;
+        
+    
+    
+    }
+            
+            
+            
+            
+            
+            
+            
+            
+    
+    
+    
+    
+    return 0;
+}
