@@ -1,0 +1,102 @@
+#include <stdio.h>
+
+//二つの整数値を読み込んで平均値を表示
+
+int main(void)
+{
+    /*int na, nb;
+    
+    puts("二つの整数を入力してください。");//puts("")=printf("\n")
+    printf("整数A:");scanf("%d",&na);
+    printf("整数B:");scanf("%d",&nb);
+
+    printf("それらの平均は%dです。\n",(na+nb)/2);
+    */
+    
+    //int型とdouble型
+    
+   /* int nx;
+    double dx;
+    
+    nx=9.99;
+    dx=9.99;
+    
+    printf("int　型変数nxの値：%d\n",nx);
+    printf("           nx/2：%d\n",nx/2);
+    
+    
+    printf("double　型変数dxの値：%f\n",dx);
+    printf("           dx/2.0：%f\n",dx/2.0);
+    //printf関数でdouble型の値を表示するための変数指定は%dではなくて、%fとなる。
+    //%fのfは浮動小数点floating-pointの頭文字
+    */
+    
+    //double型の演算
+    
+    /*double vx, vy;
+    
+    puts("二つの整数を入力してください。");
+    printf("実数vx:"); scanf("%lf",&vx);//double型の変数を読み込む時には、scanf関数に与える変数指定は%lfとなる。
+    printf("実数vy:"); scanf("%lf",&vy);
+    
+    printf("vx+vy=%f\n",vx+vy);
+    printf("vx-vy=%f\n",vx-vy);
+    printf("vx*vy=%f\n",vx*vy);
+    printf("vx/vy=%f\n",vx/vy);
+
+    */
+    
+    //演習2-3
+    //読み込んだ実数値をそのまま表示するプログラム
+    
+    /*
+    double a;
+    
+    printf("実数を入力してください。:"); scanf("%lf",&a);
+    printf("あなたは%fと入力しましたね。\n",a);
+    
+    */
+    
+    
+    //演習2-5
+    //二つの整数値を読み込んで、前者の値が後者の何％であるかを実数で
+    //表示するプログラム
+    
+    int a,b;
+
+    puts("二つの整数を入力してください。");
+    printf("整数A:"); scanf("%d",&a);
+    printf("整数B:"); scanf("%d",&b);
+    printf("Aの値はBの%f%%です。\n",(double)a*100/b);
+    
+
+    
+    //キャスト演算子
+    //(型)式という形式は、式の値を型としての値に変換したものを生成する。
+    //このような明示的な型変換をキャストと呼び、()をキャスト演算子と呼ぶ。
+    
+    
+    
+    
+    
+    return 0;
+}
+
+
+
+//式na+nbを囲む()は、演算を優先的に結びつけるための記号。
+//整数だけしか扱えないのが、intという型。
+
+//C言語では、実数を浮動小数点数(floating-point number)という形式で表す。
+//C言語では、浮動小数点数をdouble型で表す。
+
+
+//型と演算
+//int/doubleやdouble/intのように、一方のオペランドがint型で、他方のオペランドがdouble型である場合、
+//int型のオペランドの値がdoubleに"格上げ"されるという、暗黙の型変換が行われ、double同士の演算として行われる。
+//したがって演算によって得られる結果もdouble型となる。
+
+
+
+
+
