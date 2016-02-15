@@ -1,0 +1,485 @@
+#include <stdio.h>
+
+//List9-1
+//文字列リテラルの大きさを表示する
+/*
+int main(void){
+
+    printf("sizeof(\"123\")        =%u\n",(unsigned)sizeof("123"));
+    printf("sizeof(\"AB\\tC\")      =%u\n",(unsigned)sizeof("AB\tC"));
+    printf("sizeof(\"abc\\0def\")   =%u\n",(unsigned)sizeof("abc\0def"));
+
+    return 0;
+
+}
+*/
+
+//List9-2
+//文字列を格納する配列
+/*
+int main(void){
+
+    char    str[4];//文字列を格納する配列。charは算術型文字型。
+    
+    str[0]='A';//代入。
+    str[1]='B';
+    str[2]='C';
+    str[3]='\0';//文字列の末尾を表すナル文字
+    
+    printf("文字列strは%sです。\n",str);
+    
+    return  0;
+
+}
+*/
+
+
+//List9-3
+//文字列を格納する配列（初期化）
+/*
+int main(void){
+
+    char str[]="ABC";
+    
+    printf("文字列strは%sです。\n",str);
+
+    return 0;
+
+
+}
+
+*/
+
+
+//演習9-1
+//List9-3の配列strの宣言を
+//char str[]="ABC\0DEF"と書き換えてプログラムを実行し、
+//その結果に対する考察を行え。
+
+/*
+int main(void){
+
+    char str[]="ABC\0DEF";
+    
+    printf("文字列strは%sです。\n",str);
+    
+    return  0;
+
+}
+*/
+
+//考察
+//strに代入された"ABC\0DEF"は、printf関数で表示すると、
+//ABCまでが出力される。
+//これは,文字列の末尾がナル文字\0により決定され、
+//\0以降のDEFは表示されなくなる。
+//そして、文字列ABC\0DEFは文字列ではない、文字列リテラルである。
+
+
+//List9-4
+//名前を尋ねて挨拶（文字列の読み込み）
+/*
+int main(void){
+
+    char    name[40];
+    
+    printf("お名前は:");
+    scanf("%s",name);
+    
+    printf("こんにちは%sさん!!!\n",name);
+
+    
+    return 0;
+
+
+}
+*/
+
+//演習9-2
+//以下のように初期化された文字列strを空文字列にするには、どのような操作を行えばよいか？
+/*
+int main(void){
+
+
+    char str[]="ABC";
+    
+    printf("文字列strは%sです。\n",str);
+
+    str[0]='\0';
+    
+    printf("文字列strは%sです。\n",str);
+    
+    
+    return 0;
+}
+*/
+//文字列を格納する配列strの先頭要素str[0]にナル文字\0を代入すればよい。
+
+//List9-5
+//文字列12345を書式化して表示
+/*
+int main(void){
+    
+    char    str[]="12345";
+    
+    printf("%s\n",  str);       //そのまま
+    printf("%3s\n",  str);      //最低3桁
+    printf("%.3s\n",  str);     //3桁まで
+    printf("%8s\n",  str);      //右に詰め
+    printf("%-8s\n",  str);     //左に詰め
+    
+
+    return 0;
+}
+
+*/
+
+
+//List9-6
+//文字列の配列
+/*
+int main(void){
+    
+    int i;
+    char    cs[][6]={"Turbo","NA","DOHC"};//csは二次元配列でcs[行][列]
+    
+    for (i=0; i<3; i++)//iは行を並べる。つまりiはcsの要素数。
+        printf("cs[%d]＝\"%s\"\n",i,cs[i]);
+
+    return 0;
+}
+*/
+
+//List9-7
+//文字列の配列を読み込んで表示
+/*
+
+int main(void){
+
+    
+    int i;
+    char    cs[3][128];
+    
+    for (i=0; i<3; i++){
+    printf("cs[%d]:",i);
+    scanf("%s",cs[i]);//cs[0],cs[1],cs[2]のそれぞれが、文字列なので、&演算子を付けずにscanf関数に渡さなければさならない。
+    }
+    
+    for (i=0; i<3; i++)
+        printf("cs[%d]=\"%s\"\n",i,cs[i]);
+    
+
+
+    return 0;
+}
+*/
+//List9-8
+//文字列の長さを調べる。
+
+/*
+//文字列strの長さを返す。
+unsigned str_length(const char str[])
+{
+    unsigned len=0;
+    
+    while (str[len])
+        len++;
+    return (len);
+}
+
+
+int main(void){
+
+    char st[100];
+    
+    printf("文字列を入力してください：");
+    scanf("%s",st);
+    
+    printf("文字列%sの長さは%uです。\n",st, str_length(st));
+
+    return 0;
+
+}
+
+*/
+
+//演習9-3
+//文字列strの中に、文字cが含まれていれば（複数ある場合は、最も先頭側とする）、その添字を返し、含まれていなければ-1を返す関数
+//int str_char(const char str[], int c)を作成せよ。
+
+/*(途中で頓挫)
+int str_char(const char str[], int c)
+{
+ 
+    unsigned num=0;
+    
+    while (str[num]){
+    
+        num++;
+    
+        if (str[num]==c)
+    
+        return (num);
+    
+        if (str[num]==0)
+
+        return(-1);
+
+    }
+
+}
+
+
+int main(void){
+
+    char cn[100];
+    int c;
+    
+    printf("文字列を入力してください:");
+    scanf("%s",cn);
+
+
+    printf("値は%dです。",str_char(cn,c));
+    
+    
+    return 0;
+
+}
+
+*/
+
+
+/*
+int str_char(const char str[], int c){
+
+    int i;
+    
+    for (i=0; str[i]!='\0'; i++) {//str[i]がnull文字でない限り、iを増加。
+    
+        if(str[i]==c){//もし、str[i]==cとなれば、その添字を返す。
+            return i;
+        
+        }
+    }
+    
+    return -1;//for文でreturnされない場合、ここでreturn-1することで、
+    //この関数自体の返却値としての体裁を保っている。
+    
+    
+}
+
+int main(void){
+
+
+
+    int no;
+    char str[128];
+    char ch;
+    
+    
+    printf("文字列:");
+    scanf("%s",str);//%sは文字列入力。
+    printf("文字:");
+    scanf(" %c",&ch);//スペースが必要。%cは文字入力。
+    
+    no=str_char(str, ch);
+    
+    if(no!=-1){
+    
+        printf("%cの添字は%dです。\n",ch,no);
+    
+    }
+    
+    else {
+     
+        printf("%cは存在しません。\n",ch);
+    
+    }
+    
+    
+    
+    return 0;
+
+
+}
+*/
+
+
+
+//演習9-4
+//文字列strの中に、文字cが含まれている個数（含まれていなければ0とする）を返す関数
+// int str_chnum(const char str[], int c){}を作成せよ。
+/*
+int str_chnum(const char str[], int c){
+    
+    int i;
+    int count=0;
+    
+    for (i=0; str[i]!='\0'; i++)//str[i]がnull文字でない限り、forループする。
+        
+        if(str[i]==c){//もし、str[i]==cなら、countの値を1増やす。
+            count++;
+            
+            
+                    }
+    
+        return (count);
+
+        
+    }
+
+
+
+int main(void){
+
+    int no;
+    char str[128];
+    char ch;
+    
+    
+    printf("文字列:");
+    scanf("%s",str);//%sは文字列入力。
+    printf("文字:");
+    scanf(" %c",&ch);//スペースが必要。%cは文字入力。
+    
+    no=str_chnum(str, ch);
+    
+    if(no!=-1){
+        
+        printf("%cの個数は%dです。\n",ch,no);
+        
+    }
+    
+    else {
+        
+        printf("%cの個数は0個です。\n",ch);
+        
+    }
+    
+    return 0;
+    
+}
+ */
+
+
+//List9-9
+//文字列を1文字づつ表示
+/*
+void put_string(const char str[]){
+
+
+    unsigned i=0;
+    
+    while (str[i])
+        putchar(str[i++]);
+
+}
+
+int main(void){
+
+
+    char str[100];
+    
+    printf("文字列を入力してください:");
+    scanf("%s", str);
+    
+    put_string(str);
+    putchar('\n');
+    
+    return 0;
+
+}
+*/
+
+
+//演習9-5
+//List9-9に示した関数put_stringと同じ動作をする関数を、putchar関数ではなくて、printf関数を用いて作成せよ。
+
+/*
+void put_string(const char str[]){
+    
+        printf("%s",str);
+}
+
+
+int main(void){
+    
+    
+    char str[100];
+    
+    printf("文字列を入力してください:");
+    scanf("%s", str);
+    
+    put_string(str);
+    putchar('\n');
+    
+    return 0;
+    
+}
+*/
+
+//演習9-5別解
+/*
+void put_string(const char str[]){
+    unsigned i = 0;
+    
+    while(str[i]){
+        printf("%c", str[i++]);//%cは1文字として出力。
+    }
+    
+}
+
+int main(void){
+    char  str[100];
+    
+    printf("文字列を入力してください：");
+    scanf("%s", str);
+    
+    put_string(str);
+    putchar('\n');
+    
+    return 0;
+}
+
+*/
+
+//演習9-6
+//文字列strをno回だけ連続して表示する関数
+//void put_stringn(const char str[], int no)を作成せよ
+
+/*
+void put_stringn(const char str[], int no){
+    
+    unsigned i=0;
+    int j;
+    
+    while (str[i])
+        putchar(str[i++]);
+
+    for (j=0; j<no-1; j++)//for文は初期値を与えなければ、0から始まる。だから、個数表示なら適宜調整して表示。no-1の-1は個数表示のための調整係数といったところ。
+            printf("%s",str);
+    
+    
+}
+
+
+int main(void){
+    
+    int nm;
+    char str[100];
+    
+    printf("文字列を入力してください:");
+    scanf("%s", str);
+    printf("何回表示しますか?:");
+    scanf("%d",&nm);
+    
+    put_stringn(str, nm);
+    
+    putchar('\n');
+    
+    return 0;
+    
+}
+*/
+
+
