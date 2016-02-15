@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <limits.h>
+
+/*
+
+int main(void)
+{
+
+    printf("char         :%d~%d\n",  CHAR_MIN,   CHAR_MAX);
+    printf("short int    :%d~%d\n",  SHRT_MIN,   SHRT_MAX);
+    printf("int          :%d~%d\n",  INT_MIN,   INT_MAX);
+    printf("long int     :%ld~%ld\n",  LONG_MIN,   LONG_MAX);//long int型の値を表示する為の変換指定は%ld
+  return 0;
+ 
+ }
+ */
+
+/*
+int main(void){
+    
+    printf("この処理系のchar型は");
+    
+    if (CHAR_MIN)
+        puts("符号付きです。");
+    else
+        puts("符号無しです。");
+    
+    return(0);
+
+}
+
+*/
+
+
+
+
+//型の大きさを表示する
+
+/*
+int main(void){
+    printf("sizeof(char)     =   %u\n",  (unsigned)sizeof(char));
+    printf("sizeof(short)    =   %u\n",  (unsigned)sizeof(short));
+    printf("sizeof(int)      =   %u\n",  (unsigned)sizeof(int));
+    printf("sizeof(long)     =   %u\n",  (unsigned)sizeof(long));
+    
+    return 0;
+
+}
+*/
+
