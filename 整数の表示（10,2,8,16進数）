@@ -1,0 +1,47 @@
+//0~65535までの整数を,10進数、2進数、8進数、16進数で表示
+
+int count_bits(unsigned x){
+
+    int count=0;
+    while (x) {
+        if(x&1U)
+            count++;
+            x>>=1;//x=x>>1の複合代入演算子。整数xと1U(最下位ビットのみが1で後は0)との論理積が非ゼロなら、countを1増やして、整数xを右に1ビットシフトさせたものをxに代入する。
+    }
+    return (count);
+}
+
+
+int int_bits(void){
+    
+    return (count_bits(~0U));//count_bits関数に~0U、つまり、全桁1のun
+}
+
+
+void print_nbits(unsigned x, unsigned n){//値を返さない関数だからvoid。print系の関数は値を返さない。
+    
+    int i = int_bits();
+    
+    i = (n<i)?n-1:i-1;//n<iが非0なら、n-1を、0ならi-1をiに代入して以下のfor分の制御式の値になる。
+    
+    for (; i>=0; i--) {
+        putchar(((x>>i)&1U)?'1':'0');//xをiビット右シフトした値と1Uとの論理積が非ゼロなら1をゼロなら0をputcharにより出力。
+    }
+    
+}
+
+int main(void) {
+    
+    unsigned i ;
+    
+    for (i=0; i<=65535; i++) {
+        printf("%5u\n", i);//unsigned型の10進数を最大5桁で表示
+        print_nbits(i,16);//unsigned型の2進数を表示。上のprint_nbit関数。unsigned型の整数xの下nビットを表示だが、n=16とすれば、下16ビットまで、つまり、全桁表示。
+        putchar('\n');
+        printf("%06o\n", i);//%oは8進数の出力に用いる。
+        printf("%4X\n", i);//%x(X)は16進数をアルファベット部分を小文字(アルファベット部分は大文字)で表示する。
+        
+    }
+    
+    return 0;
+}
