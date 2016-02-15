@@ -1,0 +1,328 @@
+
+#include <stdio.h>
+
+/*
+//int型整数値の二乗値
+int sqr_int(int x)
+{
+    return (x * x);
+}
+
+//double型浮動小数点数の二乗値
+double sqr_double(double x)
+{
+    return (x * x);
+}
+
+
+int main(void) {
+    
+    int nx;
+    double dx;
+    
+    printf("整数を入力してください:");scanf("%d",&nx);
+    printf("その数の二乗の値は%dです。\n",sqr_int(nx));
+    
+    printf("整数を入力してください:");scanf("%lf",&dx);
+    printf("その数の二乗の値は%lfです。\n",sqr_double(dx));
+    
+    return 0;
+}
+*/
+
+
+
+
+//関数形式マクロ版　整数の二乗と浮動小数点数の二乗
+
+
+/*
+#define sqr(x)  ((x)*(x))
+
+int main(void)
+{
+    int ix;
+    double dx;
+    
+    printf("整数を入力してください:");scanf("%d",&ix);
+    printf("その数の二乗の値は%dです。\n",sqr(ix));
+
+    printf("実数を入力してください:");scanf("%lf",&dx);
+    printf("その数の二乗の値は%lfです。\n",sqr(dx));
+    
+    //実数の変換指定は%lf
+
+    return 0;
+    
+ }
+
+
+*/
+
+//演習8-1
+//二つの値xとyの差を返す関数形式マクロdiff(x,y)を定義せよ。
+
+/*
+#define diff(x,y) ((x)-(y))
+
+int main(void){
+    
+    int ix, iy;
+    double dx, dy;
+ 
+ 
+    //int型は特に宣言がなければsigned　int
+    
+    printf("二つの整数を入力してください:\n");
+    printf("整数1:");scanf("%d",&ix);
+    printf("整数2:");scanf("%d",&iy);
+    printf("それら整数の差は%dです。\n",diff(ix,iy));
+    
+    
+    printf("二つの実数を入力してください:\n");
+    printf("実数1:");scanf("%lf",&dx);
+    printf("実数2:");scanf("%lf",&dy);
+    printf("それら実数の差は%lfです。\n",diff(dx,dy));
+ 
+    return 0;
+}
+*/
+
+
+
+
+
+//演習8-2
+//４つの値a,b,c,dの最大値を求める二つの関数に対する考察
+
+/*
+#define max(x,y) (((x)>(y))?(x):(y))
+
+int main(void)
+{
+    
+    int a, b, c, d;
+
+    printf("４つの整数を入力してください:\n");
+    printf("整数a:");scanf("%d",&a);
+    printf("整数b:");scanf("%d",&b);
+    printf("整数c:");scanf("%d",&c);
+    printf("整数d:");scanf("%d",&d);
+
+    printf("max(max(a,b),max(c,d))を検証する。\n");
+    printf("max(a,b)の値は%dです。\n",max(a,b));
+    printf("max(c,d)の値は%dです。\n",max(c,d));
+    printf("よって、max(a,b)とmax(c,d)の値の大きい方がmax(max(a,b),max(c,d))の値と等しければよい。\n");
+    printf("max(max(a,b),max(c,d))の値は%dです。\n",max(max(a,b),max(c,d)));
+    
+    putchar('\n');
+    
+    printf("max(max(max(a,b),c),d)を検証する。\n");
+    printf("max(max(a,b),c)の値は%dです。\n",max(max(a,b),c));
+    printf("max(max(max(a,b),c),d)の値は%dです。\n",max(max(max(a,b),c),d));
+    
+    
+    
+    return 0;
+    
+}
+*/
+
+//演習8-3
+//type型の二つの値を交換する関数形式マクロswap(type,a,b)を定義
+
+
+/*
+
+#define swap(type, x, y) {type tmp; tmp=x,x=y,y=tmp;}//xの中身をtmpに入れる。空になったx
+//中にyを代入。tmpに保管していたxの中身をyに戻す。
+//;で句切られた文は複合文として扱う。
+
+
+int main(void){
+    
+    int m, n;
+    double a, b;
+    
+    puts("二つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&m);
+    printf("整数2:");scanf("%d",&n);
+
+    swap(int, m, n);
+    puts("二つの整数を交換すると");
+    printf("整数1の値:%d\n",m);
+    printf("整数2の値:%d\n",n);
+    
+    puts("二つの実数を入力してください。");
+    printf("実数1:");scanf("%lf",&a);
+    printf("実数2:");scanf("%lf",&b);
+    
+    swap(double, a, b);
+    puts("二つの実数を交換すると");
+    printf("実数1の値:%lf\n",a);
+    printf("実数2の値:%lf\n",b);
+    
+    
+    
+    
+    return 0;
+
+
+}
+
+
+*/
+
+
+//関数形式マクロとコンマ演算子
+
+/*
+//List8-4
+//警報を発しながら表示を行うマクロ
+
+#define putsa(str)  (putchar('\a'),puts(str))
+
+int main(void)
+
+{
+
+    int na;
+    
+    printf("整数を入力してください:");scanf("%d",&na);
+    
+    if(na)
+        putsa("その数は0ではありません。");
+        else
+            putsa("その数は0です。");
+            
+            
+            return 0;
+
+
+
+}
+*/
+
+
+
+//List8-5
+
+/*
+enum animal {Dog, Cat, Monkey, Invalid};
+
+
+void dog(void)
+{
+    
+    puts("わんわん!");
+    
+}
+
+void cat(void)
+{
+    
+    puts("にゃーお!");
+    
+}
+
+void monkey(void)
+{
+    
+    puts("きっきっ!");
+    
+}
+
+
+
+
+enum animal select(void)
+{
+    int tmp;
+    
+    do{
+        printf("0・・・犬   1・・・猫   2・・・猿   3・・・終了:");scanf("%d",&tmp);
+    } while(tmp<Dog||tmp>Invalid);
+    
+    return (tmp);
+}
+
+
+
+
+
+int main(void)
+{
+    enum animal selected;
+    
+    do{
+        switch ( selected = select() ) {
+            case Dog       : dog();    break;
+            case Cat       : cat();    break;
+            case Monley    : monkey(); break;
+        }
+    }   while (selected != Invalid );
+
+    return 0;
+}
+
+*/
+
+
+/*
+
+//演習8-4
+//性別や季節などを表す列挙体を自由に定義し、それを用いたプログラムを作成せよ。
+
+enum season { Spring, Summer, Fall, Winter, Invalid};
+
+int main(void){
+
+    enum season s;
+    int m;
+    
+    do{
+    
+        printf("月を入力してください。:");scanf("%d",&m);
+        
+        switch (m) {
+            case 3:
+            case 4:
+            case 5: s=Spring;break;
+            case 6:
+            case 7:
+            case 8: s=Summer;break;
+            case 9:
+            case 10:
+            case 11: s=Fall;break;
+            case 12:
+            case 1:
+            case 2: s=Winter;break;
+            default: s=Invalid; break;
+
+        }
+        
+        if (s==Invalid) {
+            puts("不正な月です。\n");
+        }
+    
+    }while (s==Invalid);//この制御文が非0の間、doが繰り返される。0ならdoを抜ける。
+    
+    switch (s) {
+        case Spring     : puts("春ですよー!");break;
+        case Summer     : puts("夏ですよー!");break;
+        case Fall       : puts("秋ですよー!");break;
+        case Winter     : puts("冬ですよー!");break;
+        default: s=Invalid; break;
+
+            }
+    
+    return 0;
+
+
+}
+
+*/
+
+
+
+
