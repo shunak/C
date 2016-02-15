@@ -1,0 +1,133 @@
+#include <stdio.h>
+
+//階乗を求める
+
+/*
+int factorial(int n)
+{
+    if (n>0)
+        return(n*factorial(n-1));
+    else
+        return(1);
+}
+
+
+int main(void){
+    int num;
+    
+    printf("整数を入力してください:");scanf("%d",&num);
+    
+    printf("その数の階乗は%dです。\n",factorial(num));
+    
+    return 0;
+}
+*/
+
+//最大公約数を求める
+
+/*
+
+int gcdf(int vx, int vy)
+{
+    return   (vy==0?vx:gcdf(vy,vx%vy));
+}
+
+int gcd(int va, int vb)
+{
+    return  (va>vb?gcdf(va,vb):gcdf(vb,va));
+}
+
+int main(void)
+{
+
+    int n1, n2;
+    
+    puts("二つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&n1);
+    printf("整数2:");scanf("%d",&n2);
+    
+    printf("最大公約数は%dです。\n",gcd(n1,n2));
+    
+    return 0;
+}
+*/
+
+
+//演習8-5
+//整数nの階乗を返す関数
+//int fact(int n){}を再帰を用いずに定義せよ。
+
+/*
+int fact(int n){
+
+    int fact=1;
+    
+    do{
+    
+        fact *= n;
+    
+    }   while (--n);
+    
+    return (fact);
+
+}
+
+int main(void){
+
+    int num;
+    
+    printf("整数を入力してください。:");scanf("%d",&num);
+    printf("その数の階乗は%dです。\n",fact(num));
+
+    return 0;
+    
+}
+*/
+
+
+//演習8-6
+//n個の異なる整数からr個の整数を取り出す組み合わせの数nCrを求める関数
+//int combination(int n, int r){}
+//を作成せよ。なお、nCrは以下のように定義される。
+//n_C_r=n-1_C_r-1+n-1_C_r
+//ただし、n_C_0=n_C_n=1,n_C_1=n
+
+
+
+int combination(int n, int r)
+{
+    if (n==r) {
+        return(1);
+    }else if(r==0){
+        return(1);
+    }else if(r==1){
+        return (n);
+    }else{
+        return(combination(n-1,r-1)+combination(n-1,r));
+    }
+
+}
+
+int main(void){
+
+    int n, r;
+    
+    puts("異なるn個の整数からr個の整数を取り出す組み合わせの数n_C_rを求める。");
+    printf("整数n:");scanf("%d",&n);
+    printf("整数r:");scanf("%d",&r);
+    
+    if (n>=0&&r>=0) {
+        if (n>=r) {
+            printf("n_C_rは%dです。",combination(n,r));
+        }else{
+            printf("n>=r>=0で入力してください。");
+        }
+    }else{
+        printf("n>=r>=0で入力してください。");
+    }
+
+
+    return 0;
+}
+
+
