@@ -1,0 +1,1214 @@
+#include <stdio.h>
+
+
+/*
+int maxof(int x, int y) //関数頭部
+//以下、関数本体
+{
+    if (x>y)
+        return (x);
+    else
+        return (y);
+    
+}
+//関数本体ここまで
+
+//int maxof (int x, int y)
+//返却値型　関数名　仮引数の宣言
+//なお、実引数を囲む（）を、関数呼び出し演算子（function call operator）と呼ぶ。
+//maxof (na, nb)
+//関数名 実引数　実引数
+
+int main (void)
+{
+    int na, nb;
+    
+    puts("二つの整数を入力してください。:");
+    printf("整数1:");scanf("%d",&na);
+    printf("整数2:");scanf("%d",&nb);
+    
+    printf("大きい方の値は%dです。\n",maxof(na,nb));
+
+    return 0;
+
+}
+
+ */
+//C言語のプログラムには、ただひとつのmain関数が必要。
+//プログラムの実行時には、main関数の本体部が実行される。
+
+//関数は自分で作成することが可能。
+//というより、自分で作る事が要求される。
+
+
+//関数呼び出し式を評価すると、その返却値型の返却値となる。
+//したがって、naとnbが、それぞれ24と62であるとき、関数呼び出し式maxof(na,nb)を評価すると、int型の62となる。
+
+//引数としてやりとりされるのは値であるから、呼び出す側の実引数は、変数ではなく定数でも構わない。
+//c=maxof(x,5);
+//では、xと5の大きい方の値がcに代入される。
+
+//条件演算子
+//a?b:c aが非0であればbを評価した値、そうでなければcを評価した値。
+
+//様々なmaxof関数の定義
+//(a)
+//int maxof(int x, int y)
+//{
+//      int max;
+//
+//      if (x>y)
+//          max=x;
+//      else
+//          max=y;
+//      return (max);
+//}
+
+
+//(b)
+//int maxof(int x, int y)
+//{
+//      int max=x;
+//
+//      if (y>max)
+//          max=y;
+//      return (max);
+//}
+
+
+//(b)
+//int maxof(int x, int y)
+//{
+//      return ((x>y)?x:y);
+//}
+
+//出口であるreturn文が一つの方がプログラムはすっきりする。
+
+
+
+//三値の最大値
+//関数本体は必ず{}で囲まれた複合文になる
+
+/*
+
+int max3(int x, int y, int z)
+{
+    int max = x;
+    
+    if (y>max) max=y;
+    if (z>max) max=z;
+    return max;
+
+}
+
+
+int main (void)
+{
+
+    int na, nb, nc;
+    
+    puts("３つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&na);
+    printf("整数2:");scanf("%d",&nb);
+    printf("整数3:");scanf("%d",&nc);
+    
+    printf("最も大きい値は%dです。\n",max3(na,nb,nc));
+
+    return 0;
+}
+
+
+*/
+
+
+//演習6-1
+
+//二つのint型整数の小さい方の値を返す関数
+/*
+
+int minof(int x, int y)
+{
+    
+    return ((x>y)?y:x);
+    
+}
+
+
+int main (void)
+{
+    
+    int ma, mb;
+    
+    puts("二つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&ma);
+    printf("整数2:");scanf("%d",&mb);
+    
+    printf("小さい方の値は%dです。\n",minof(ma,mb));
+    
+    return 0;
+}
+*/
+
+
+//演習6-2
+//３つのint型整数の最小値を返す関数
+
+/*
+
+int min3(int x, int y, int z)
+{
+    int min=x;
+    
+    if (y<min)
+        min=y;
+    if (z<min)
+        min=z;
+    return (min);
+}
+
+
+int main (void)
+{
+    
+    int na, nb, nc;
+    
+    puts("３つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&na);
+    printf("整数2:");scanf("%d",&nb);
+    printf("整数3:");scanf("%d",&nc);
+    
+    printf("最も小さい値は%dです。\n",min3(na,nb,nc));
+    
+    return 0;
+}
+
+ */
+
+/*
+
+
+//二乗値の差
+
+//二乗値を返す
+int sqr(int x)
+{
+    return (x*x);
+}
+
+//差を返す
+int diff(int x, int y)
+{
+    return (x>y?x-y:y-x);
+}
+
+int main (void)
+{
+
+    int kx, ky, kx2, ky2;
+    
+    puts("二つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&kx);
+    printf("整数2:");scanf("%d",&ky);
+
+    kx2=sqr(kx); //kxの二乗
+    ky2=sqr(ky); //kyの二乗
+    
+    printf("kxの二乗とkyの二乗の差は%dです。\n",diff(kx2,ky2));
+    
+    
+    return 0;
+
+}
+
+ */
+
+
+//演習6-3
+//int型整数を３乗値を返す関数
+
+/*
+
+int cube(int x)
+{
+    return (x*x*x);
+}
+
+//差を返す
+int diff(int x, int y)
+{
+    return (x>y?x-y:y-x);
+}
+
+int main (void)
+{
+    
+    int kx, ky, kx2, ky2;
+    
+    puts("二つの整数を入力してください。");
+    printf("整数1:");scanf("%d",&kx);
+    printf("整数2:");scanf("%d",&ky);
+    
+    kx2=cube(kx); //kxの三乗
+    ky2=cube(ky); //kyの三乗
+    
+    printf("kxの二乗とkyの二乗の差は%dです。\n",diff(kx2,ky2));
+    
+    
+    return 0;
+    
+}
+
+
+*/
+
+//べき乗を求める関数
+/*
+double power(double dx, int no)
+{
+    int i;
+    double tmp=1.0;
+    
+    for (i=1; i<=no; i++)
+        tmp*=dx;
+    return (tmp);
+}
+
+*/
+
+//dxのnoを返す(第二版)
+/*
+
+double power(double dx, int no)
+{
+    double tmp=1.0;
+    
+    while(no-->0)
+        tmp*=dx;
+    return tmp;
+}
+
+
+//これなら、繰り返しの為の変数iが不要となり、関数がコンパクトになる。
+
+int main (void)
+{
+    int n;
+    double x;
+    
+    printf("実数を入力してください:");scanf("%lf",&x);
+    printf("整数を入力してください:");scanf("%d",&n);
+    
+    printf("%.2lfの%d乗は%.2lfです。\n",x,n,power(x,n));
+    
+    
+}
+
+ */
+//他の関数を呼び出す。
+
+
+
+
+
+
+
+
+
+
+//dxのno乗を返す（第二版）
+
+/*
+double power(double dx, int no)
+{
+    double tmp=1.0;
+    
+    while(no-->0)
+        tmp*=dx;
+    return tmp;
+}
+
+
+*/
+
+
+
+
+/*
+//他の関数を呼び出す
+//演習6-4
+//int型整数の四乗値を返す関数
+//int pow4(intx)を作成。
+
+int sqr(int x)
+{
+    return (x*x);
+}
+
+//四乗値を返す関数
+int pow4(int x)
+{
+    return (sqr(x)*sqr(x));
+}
+
+int main (void)
+{
+    
+    int ma;
+    
+    puts("整数を入力してください:");scanf("%d",&ma);
+    
+    printf("この整数の四乗値は%dです。\n", pow4(ma));
+
+    return 0;
+    
+}
+*/
+
+
+
+//関数の設計
+
+//値を返さない関数
+
+//*をno個連続表示
+/*
+void put_stars(int no)
+{
+    while (no-->0)
+        putchar('*');
+}
+
+int main(void)
+{
+    int i,ln;
+    
+    printf("何段ですか:");scanf("%d",&ln);
+    
+    for (i=1; i<=ln; i++) {
+        put_stars(i);
+        putchar('\n');
+    }
+
+    return 0;
+
+}
+*/
+//関数put_starsを導入したおかげで、三角形を表示するための二重ループが
+//一重ループとなって、プログラムの見通しがよくなっている。
+
+
+//この関数は表示を行うだけであって、特に返却値を返す必要がない。
+//このような返却値型は,voidと宣言する。
+//voidは空のという意味。
+//C言語では、値を返すものも返さないものも一緒にして扱う。
+//他のプログラミング言語では、値を返さないものをサブルーチン(fortran)や手続き(pascal)
+//などと、関数と違う概念で捉えることもある。
+
+
+
+//汎用性
+
+
+//直角三角形（右下が直角を表示）
+
+//文字chをno個連続表示
+
+/*
+void put_nchar(int ch, int no)
+{
+    while (no-->0)
+        putchar(ch);
+}
+
+int main (void)
+{
+
+    int i,ln;
+    
+    printf("何段ですか:");scanf("%d",&ln);
+    
+    for (i=1; i<=ln; i++) {
+        put_nchar(' ',ln-i);
+        put_nchar('*', i);
+        putchar('\n');
+    }
+    
+        return 0;
+    
+    }
+
+ */
+//このput_ncharは*しか表示できない関数put_starsよりも、汎用性という点で優れている。
+
+
+//仮引数を受け取らない関数
+
+//非負の整数を読み込んで、それを逆順に表示するプログラム。
+
+//非負の整数を読み込んで返す。
+
+/*
+
+int scan_unit(void)
+{
+    int tmp;
+    
+    
+    do{
+        printf("非負の整数を入力してください:");scanf("%d",&tmp);
+        if (tmp<0)
+            puts("\a負の数を入力しないでください。");
+    } while (tmp<0);
+    return(tmp);
+}
+
+
+int rev_int(int num)
+{
+    int tmp=0;
+    
+    if (num>0) {
+        do{
+            tmp=tmp*10+num%10;
+            num/=10;
+        }while (num>0);
+    }
+    return (tmp);
+
+}
+
+
+
+int main(void)
+{
+    int nx=scan_unit();
+    printf("反転した値は%dです。\n",rev_int(nx));
+    
+    return 0;
+}
+
+*/
+
+//int main (void)
+//は、main関数が仮引数を受け取らないことを示している。
+
+//関数の返却値での初期化
+//main関数での変数nxの宣言、
+//この変数に対して与えられている初期化子scan_unit()は、関数呼び出し式。
+//このように、関数の返却値で変数を初期化することもできる。
+
+//有効範囲
+
+//関数scan_unitと関数rev_intの両方に、同じ識別子（名前）を持った変数tmpがあるが、
+//これらはそれぞれ独立した別個のもの。
+
+
+
+//変数などに与えられる識別子には、その名前が通用する範囲というものがあり、
+//これは有効範囲（scope）という考え方で扱われる。
+//ブロック（複合文）の中で宣言された、これらの変数の名前は、そのブロックの中でのみ通用し、
+//その外では一切無効となる。
+//すなわち、変数が宣言された場所から、その宣言を囲むブロックの最後である｝まで通用する。
+//このような有効範囲をブロック有効範囲と呼ぶ。
+
+
+
+
+//演習6-6
+//画面に「こんにちは。」と表示して改行を行う関数
+//void hello(void)
+//を作成せよ。
+
+/*
+
+void hello(void)
+{
+    printf("こんにちは。\n");
+}
+
+
+
+int main (void)
+{
+
+    hello();//
+    
+    return 0;
+}
+ */
+
+//voidは引数なしの関数を表わします。
+//int型やvoid型の関数を宣言する際に
+
+//宣言
+//int pow（int i);　//int型引数あり
+//void hello(void); //void型引数なし
+
+//呼出し
+//pow(a); 　//int型引数あり
+//hello();　//void型引数なし
+
+//このような記述となります。
+//これは引数iという変数が必要なのでこのような記述方法になりました。
+//今回の問題は引数は存在せず、helloという文字を表示するだけなので、
+//関数の呼び出しの際に引数の記述は必要ありません。
+
+
+
+//演習6-5
+//警報をno回だけ発する関数
+//void alert(int no)
+
+/*
+
+void alert(int no)
+{
+    while (no-->0)
+        printf("\a");
+}
+
+
+int main(void)
+{
+
+    int kaisu;
+    printf("警報の回数を入力してください:");scanf("%d",&kaisu);
+    alert(kaisu);
+    
+    return 0;
+
+}
+
+
+*/
+
+//voidは仮引数を受け取らない関数
+
+//最高点を求めるプログラム
+
+/*
+#define   NUMBER  5
+
+int tensu[NUMBER];
+
+int top(void);//関数原型宣言
+
+int main(void)
+{
+    extern int tensu[];
+    int i;
+    
+    printf("%d人の点数を入力してください。\n",NUMBER);
+    for (i=0; i<NUMBER; i++) {
+        printf("%d:",i+1);scanf("%d",&tensu[i]);
+    }
+    printf("最高点=%d\n",top());
+    return 0;
+
+}
+
+//配列tensuの最大値を返す[関数定義]
+int top(void)
+{
+    extern int  tensu[];
+    int i;
+    int max=tensu[0];
+    for (i=0; i<NUMBER; i++)
+        if (tensu[i]>max)
+            max=tensu[i];
+    return (max);
+}
+ */
+
+
+//ファイル有効範囲
+//関数中のブロックで宣言された変数などの識別子（名前）が、そのブロックに特有であるのに対し、
+//配列tensuのように、関数の外で宣言された変数の識別子は、宣言された場所から、そのソース・プログラムの
+//終端まで名前が通用する。
+//このような有効範囲をファイル有効範囲と呼ぶ。
+
+
+/*
+#define NUMBER 5    
+
+//要素数noの配列vcの最大値を返す
+int max_of(int vc[], int no)
+{
+    int i;
+    int max=vc[0];
+    for (i=1; i<no; i++)
+        if (vc[i]>max)
+            max=vc[i];
+    return max;
+}
+
+int main(void)
+{
+    int i;
+    int eng[NUMBER];    //英語の点数
+    int mat[NUMBER];    //数学の点数
+    int max_e, max_m;   //各々の最高点
+    
+    printf("%d人の点数を入力してください。\n",NUMBER);
+    for (i=0; i<NUMBER; i++) {
+        printf("[%d]英語:",i+1);scanf("%d",&eng[i]);
+        printf("    数学:");scanf("%d",&mat[i]);
+    }
+    
+    max_e = max_of(eng, NUMBER);
+    max_m = max_of(mat, NUMBER);
+
+    printf("英語の最高点=%d\n",max_e);
+    printf("数学の最高点=%d\n",max_m);
+    
+    return 0;
+}
+
+*/
+
+//受け取った配列への書き込み
+
+//重要
+//呼びだされた側の関数で仮引数として受け取った配列は、呼び出した側で与えた実引数の配列そのものである。
+//つまり、受け取ったのは、呼び出したものそのもの。
+
+//これを利用して、配列の全要素に0を代入する関数を作る。
+
+//配列の全要素を0にする。
+
+//要素数noの配列vcの要素に0を代入,値を返さないvoid関数
+/*
+void int_set(int vc[], int no)
+{
+
+    int i;
+    
+    for (i=0; i<no; i++)
+        vc[i]=0;
+}
+
+int main(void)
+{
+    int i;
+    int ary1[]={1,2,3,4,5};
+    int ary2[]={3,2,1};
+    
+    int_set(ary1,5);
+    int_set(ary2,3);
+    
+    for (i=0; i<5; i++)
+        printf("ary1[%d]=%d\n",i,ary1[i]);
+    for (i=0; i<3; i++)
+        printf("ary2[%d]=%d\n",i,ary2[i]);
+
+    return 0;
+
+}
+
+*/
+
+//const型修飾子
+//受け取った配列を関数内で書き換える事ができないようにする。
+//仮引数の宣言にconstという型修飾子（type qualifier）をつければよい。
+
+
+//演習6-7
+//要素数がnoであるint型の配列vcの要素の最小値を返す関数
+
+/*
+#define MAX_SIZE 5  //最小値を調べる時に入力する数の範囲
+
+
+int min_of(const int vc[], int no)
+{
+    int i;
+    int min=vc[0];
+    for (i=1; i<no; i++)
+        if (min>vc[i])
+            min=vc[i];
+            
+    return (min);
+}
+
+int main(void)
+{
+    
+    
+    int i;
+    int ary[MAX_SIZE]={5,2,-3,-9,2};
+    for(i=0;i<MAX_SIZE;i++){
+        printf("ary[%d]=%d\n", i, ary[i]);
+    }
+    printf("最小値は%dです\n", min_of(ary,MAX_SIZE));
+    return (0);
+}
+*/
+
+//演習6-8
+//要素数がnoであるint型の配列vcの並びを逆順にする関数
+//void rev_intary(int vc[], int no)
+
+/*
+#define MAX_SIZE 5
+
+void rev_intary(int vc[], int no)//これは値を返さない関数である。
+{
+    int i, tmp;
+    for (i=0; i<no/2; i++) {
+        tmp = vc[i];
+        vc[i]=vc[no-1-i];
+        vc[no-1-i]=tmp;
+    }
+}
+
+int main(void){
+    
+    int i;
+    int vc[MAX_SIZE]={1,2,3,4,5};
+    
+    rev_intary(vc,MAX_SIZE);
+    
+    for (i=0; i<MAX_SIZE; i++) {
+        printf("vc[%d]=%d\n",i,vc[i]);
+    }
+    
+    
+    return 0;
+}
+*/
+
+//演習6-9
+//要素数がnoであるint型の配列v2の並びを逆順にしたものを配列v1に格納する関数
+//void intary_rcpy(int v1[], const int v2[], int no)
+//作成せよ。
+
+
+//呼び出し関数内の引数は仮引数といい、呼び出した側であるmain関数内での引数を実引数という。
+
+/*
+#define MAX_SIZE 5
+
+void intary_rcpy(int v1[], const int v2[], int no)//これは値を返さない関数である。
+{
+    
+    int i,tmp;
+    for (i=0; i<no; i++) {
+        v1[i]=v2[i];
+    }//v2がconst型修飾子を伴う関数の為に、配列v1に値を格納してから、配列転置の手続きを行う必要がある。
+    for (i=0; i<no/2; i++) {
+        tmp = v1[i];
+        v1[i]=v1[no-1-i];
+        v1[no-1-i]=tmp;
+    }
+    
+}
+
+int main(void){
+    
+    int i;
+    int v1[MAX_SIZE]={};
+    int v2[MAX_SIZE]={12,34,26,83,90};
+    
+    
+    intary_rcpy(v1, v2, MAX_SIZE);
+    
+    for (i=0; i<MAX_SIZE; i++) {
+        printf("vc[%d]=%d\n",i,v1[i]);
+    }
+    
+    
+    return 0;
+}
+
+*/
+
+//逐次検索
+
+//配列の先頭から順になぞっていき、目的とするものと同じ値を持つ要素を見つける一連の手続きを逐次検索という。
+
+
+/*
+#define NUMBER 5
+#define FAILD  -1
+
+//要素数noの配列vcからkeyと一致する要素を探索
+
+int search(const int vc[], int key, int no){
+
+    int i=0;
+    
+    while (1) {
+        if (i==no)
+            return (FAILD);
+        if (vc[i]==key)
+            return (i);
+        i++;
+    }
+}
+
+
+int main(void){
+
+
+    int i, ky, idx;
+    int vx[NUMBER];
+    
+    for (i=0; i<NUMBER; i++){
+        printf("vx[%d]:",i);scanf("%d",&vx[i]);
+    }
+    
+    
+    printf("探す値:");scanf("%d",&ky);
+    
+    
+    idx = search(vx, ky, NUMBER);
+   
+    
+    if (idx==FAILD)
+        puts("\a探索に失敗しました。");
+    else
+        printf("%dは%d番目にあります。\n",ky, idx+1);
+    
+    
+    return 0;
+    
+}
+    
+ */
+
+
+//番兵法による逐次検索
+
+/*
+
+#define NUMBER 5
+#define FAILD  -1
+
+//番兵法による逐次検索
+
+
+//関数searchは、配列vcの中身を書き換えるので、仮引数vcの宣言にconstをつける事ができない。
+int search(int vc[], int key, int no){
+    
+    int i=0;
+    
+    vc[no]=key;//番兵を追加。
+    
+    while (1) {
+        if (vc[i]==key)
+            break;
+                i++;
+    }
+    
+    return(i==no?FAILD:i);//論理条件演算子
+}
+
+
+int main(void){
+    
+    
+    int i, ky, idx;
+    int vx[NUMBER+1];
+    
+    for (i=0; i<NUMBER; i++){
+        printf("vx[%d]:",i);scanf("%d",&vx[i]);
+    }
+    
+    
+    printf("探す値:");scanf("%d",&ky);
+    
+    
+    idx = search(vx, ky, NUMBER);
+    
+    
+    if (idx==FAILD)
+        puts("\a探索に失敗しました。");
+    else
+        printf("%dは%d番目にあります。\n",ky, idx+1);
+    
+    
+    return 0;
+    
+}
+*/
+
+/*
+
+#define NUMBER 5
+#define FAILD  -1
+
+int search(int vc[], int key, int no){
+    
+    int i;
+    
+    vc[no]=key;//番兵を追加。
+    
+    for (i=0; vc[i]!=key; i++)//等価演算子b!=a aとbの値が等しくなければ1、そうでなければ0
+        ;//セミコロンだけの文である空文
+    
+    
+    return( i==no? FAILD : i );//論理条件演算子
+}
+
+
+int main(void){
+    
+    
+    int i, ky, idx;
+    int vx[NUMBER+1];
+    
+    for (i=0; i<NUMBER; i++){
+        printf("vx[%d]:",i);scanf("%d",&vx[i]);
+    }
+    
+    
+    printf("探す値:");scanf("%d",&ky);
+    
+    
+    idx = search(vx, ky, NUMBER);
+    
+    
+    if (idx==FAILD)
+        puts("\a探索に失敗しました。");
+    else
+        printf("%dは%d番目にあります。\n",ky, idx+1);
+    
+    
+    return 0;
+    
+}
+*/
+
+
+
+//多次元配列の受け渡し
+
+//２行３列の行列maとmbの和をmcに格納する。
+
+/*
+
+void mat_add(const int ma[2][3], const int mb[2][3], int mc[2][3]){
+
+    int i, j;
+    
+    for (i=0; i<2; i++)
+        for (j=0; j<3; j++)
+            mc[i][j]=ma[i][j]+mb[i][j];
+}
+
+
+int main(void){
+
+    int i, j;
+    
+    int ma[2][3]={{1,2,3},{4,5,6}};
+    int mb[2][3]={{6,3,4},{5,1,2}};
+    int mc[2][3]={};
+    
+    mat_add(ma, mb, mc);
+    
+    for (i=0; i<2; i++){
+        for (j=0; j<3; j++)
+            printf("%3d",mc[i][j]);
+    putchar('\n');
+    }
+    
+    
+    return 0;
+
+}
+ */
+
+
+//多次元配列を受け取る仮引数の宣言では、最初の要素数だけは省略する事が可能。
+//従って、
+//void mat_add(const int ma[][3], const int mb[][3], int mc[][3])
+//と宣言しても構わない。
+
+
+//演習6-10
+//2行3列の行列maと3行2列の行列mbの積を、2行２列の行列mcに格納する関数
+// void mul(const int ma[2][3], const int mb[2][3], int mc[2][2])
+//作成せよ。
+
+/*
+
+void mul(const int ma[2][3], const int mb[3][2], int mc[2][2]){
+
+    int i, j, k;
+    
+    for (i=0; i<2; i++)
+        for (j=0; j<2; j++)
+            for (k=0; k<3; k++)
+                mc[i][j] += ma[i][k] * mb[k][j];
+
+}
+
+
+int main(void){
+    
+    int i, j;
+    int ma[2][3]={{1,2,3},{4,5,6}};
+    int mb[3][2]={{1,5},{5,3},{8,1}};
+    int mc[2][2]={0};
+    
+    mul(ma, mb, mc);
+
+    for (i=0; i<2; i++){
+        for (j=0; j<2; j++)
+            printf("%3d",mc[i][j]);
+        putchar('\n');
+    }
+    
+    
+    return 0;
+    
+}
+
+
+*/
+
+/*
+ 
+ int max_of(int ma[][], int mb[][], int mc[][], int no, int num){
+ 
+ int i,j;
+ int max_a = ma[0][0];
+ int max_b = mb[0][0];
+ int max_c = mc[0][0];
+ 
+ 
+ for (i=0; i<no; i++)
+ for (j=0; j<num; j++){
+ if (ma[i][j]>max_a)
+ max_a = ma[i][j];
+ return max_a;
+ if (mb[i][j]>max_b)
+ max_b = mb[i][j];
+ return max_b;
+ if (mc[i][j]>max_c)
+ max_c = mc[i][j];
+ return max_c;
+ }
+ }
+*/
+
+
+
+
+//演習6-11
+//5人の学生の3教科（国語・数学・英語）の点数を二次元配列を用いて処理するプログラムを自由に作成せよ。
+
+//1/5(火)(1)科目別の最高点数を求める。
+
+/*
+
+int max_of(int ma[1][5]){
+    
+    int i,j;
+    int max = ma[0][0];
+ 
+    for (i=0; i<1; i++)
+        for (j=0; j<5; j++)
+            if (ma[i][j]>max)
+                max = ma[i][j];
+        
+            return max;
+}
+
+int main(void){
+    
+    int i, j;
+    int jp[i][j];//国語の点数
+    int mt[i][j];//数学の点数
+    int en[i][j];//英語の点数
+    int max_j, max_m, max_e; //最高点
+    
+        printf("5人の点数を入力してください:\n");
+    
+    for (i=0; i<1; i++)
+        for (j=0; j<5; j++){
+        printf("[%d]国語:",j+1);scanf("%d",&jp[i][j]);
+        printf("    数学:");scanf("%d",&mt[i][j]);
+        printf("    英語:");scanf("%d",&en[i][j]);
+    }
+    
+    max_j = max_of(jp);
+    max_m = max_of(mt);
+    max_e = max_of(en);
+        
+    
+    printf("国語の最高点=%d\n", max_j);
+    printf("数学の最高点=%d\n", max_m);
+    printf("英語の最高点=%d\n", max_e);
+    
+    
+        return 0;
+    
+}
+*/
+
+
+//ネットで拾ってきた回答。
+//すごく参考になるから、盗みます。
+
+
+
+/*
+#define NUMBER 5
+int main(void){
+    int tensu[5][3],max[3]={0},ave[5]={0};
+    int i,j;
+    printf("%d人の点数を入力して下さい。\n",NUMBER);
+    for(i=0;i<NUMBER;i++){
+        for(j=0;j<3;j++){
+            if(j==0){
+                printf("[%d]国語：",i+1); scanf("%d",&tensu[i][j]);
+            }
+            if(j==1){
+                printf(" 数学："); scanf("%d",&tensu[i][j]);
+            }
+            if(j==2){
+                printf(" 英語："); scanf("%d",&tensu[i][j]);
+            }
+        }
+    }
+    for (i=0;i<NUMBER;i++){
+        for (j=0;j<3;j++)
+            if (tensu[i][j]>max[j])
+                max[j]=tensu[i][j];
+    }
+    for (i=0;i<NUMBER;i++)
+        for (j=0;j<3;j++)
+            ave[i]+=tensu[i][j];
+    printf("国語の最高点：%d\n",max[0]);
+    printf("数学の最高点：%d\n",max[1]);
+    printf("英語の最高点：%d\n",max[2]);
+    for (i=0;i<NUMBER;i++)
+        printf("[%d}の平均点：%d\n",i+1,ave[i]/3);
+    return 0;
+}
+*/
+
+
+
+
+
+/*
+int fx;
+
+int main(void){
+
+    static int sx;
+    int        ax;
+
+
+    printf("ax=%d",ax);
+    printf("sx=%d",sx);
+    printf("fx=%d",fx);
+    
+    return  0;
+}
+
+*/
+
