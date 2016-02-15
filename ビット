@@ -273,3 +273,193 @@ int main(void){
 
 }
 
+
+//演習7-3
+
+//符号無し整数xのposビット目を,1にした値を返す関数set、0にした値を返す関数reset、反転した値を返す関数inverse
+
+/*--- 整数x中のセットされたビット数を返す ---*/
+int count_bits(unsigned x){
+    int	 count = 0;
+    while (x) {
+        if (x & 1U) count++;		// 1U(0000000000000001)との論理積でカウント増やす
+        x >>= 1;					// ~0U(1111111111111111)を毎回1ずつビットシフト
+    }								// ビットシフトを繰り返して0000000000000000になったらループ終了
+    return (count);					// 全部合致するからカウントがビット数になっている
+}
+
+/*--- unsigned型のビット数を返す ---*/
+int int_bits(void){
+    return (count_bits(~0U));	    // 0Uの反転だから1111111111111111となり、count_bitsへ
+}
+
+/*--- unsigned型のビット内容を表示 ---*/
+void print_bits(unsigned x){
+    int	 i;
+    for (i = int_bits() - 1; i >= 0; i--){		// (ビット数-1)から0まで(ビット数)回ループ
+        putchar(((x >> i) & 1U) ? '1' : '0');	// ビットの左側から1Uと論理積で1か0に
+    }
+}
+
+/*-----符号無し整数xのposビット目を1にした値を返す-----*/
+unsigned set(unsigned x, int pos){
+    unsigned px = 1U;                   //1U(0000000000000001)
+    px <<= pos-1;                         //px = px<<pos 1Uを左にposビットだけシフトしたものをpxに代入。
+    return(x|px);                       //論理和でposビット目を1に
+}
+
+//ビットセットは論理和
+
+
+/*------符号無し整数xのposビット目を0にした値を返す-----*/
+unsigned reset(unsigned x, int pos){
+    unsigned px = 1U;                  //~1U(1111111111111110)
+    px <<=  pos-1;//例えば、lrotate(~1U,3)=11111111111110111をpxに代入。
+    px = ~px;
+    return (x&px);                      //論理積でposビット目を0に
+    }
+
+//ビットリセットは論理積
+
+
+/*------符号無し整数をposビット目を反転した値を返す------*/
+unsigned inverse(unsigned x, int pos)
+{
+    unsigned px = 1U;
+    px <<= pos - 1;
+    return (x^px);
+}
+
+//ビット反転は排他的論理和
+
+
+int main(void){
+
+    unsigned nx, no;
+    
+    printf("非負の整数を入力してください:");scanf("%u", &nx);
+    printf("何ビット目に関数処理をしますか？:");scanf("%d",&no);
+    
+    printf("\n整数を２進数で表示した値 =");print_bits(nx);
+    printf("\nsetによる値           =");print_bits(set(nx,no));
+    printf("\nresetによる値         =");print_bits(reset(nx,no));
+    printf("\ninverseによる値       =");print_bits(inverse(nx,no));
+
+    putchar('\n');
+
+    
+    
+    return 0;
+
+
+}
+
+
+//演習7-4
+//符号無し整数xのposビット目からn個のビットを,1にした値を返す関数set_n、0にした値を返す関数reset_n、反転した値を返す関数inverse_n
+
+
+/*--- 整数x中のセットされたビット数を返す ---*/
+int count_bits(unsigned x){
+    int	 count = 0;
+    while (x) {
+        if (x & 1U) count++;		// 1U(0000000000000001)との論理積でカウント増やす
+        x >>= 1;					// ~0U(1111111111111111)を毎回1ずつビットシフト
+    }								// ビットシフトを繰り返して0000000000000000になったらループ終了
+    return (count);					// 全部合致するからカウントがビット数になっている
+}
+
+/*--- unsigned型のビット数を返す ---*/
+int int_bits(void){
+    return (count_bits(~0U));	    // 0Uの反転だから1111111111111111となり、count_bitsへ
+}
+
+/*--- unsigned型のビット内容を表示 ---*/
+void print_bits(unsigned x){
+    int	 i;
+    for (i = int_bits() - 1; i >= 0; i--){		// (ビット数-1)から0まで(ビット数)回ループ
+        putchar(((x >> i) & 1U) ? '1' : '0');	// ビットの左側から1Uと論理積で1か0に
+    }
+}
+
+/*-----符号無し整数xのposビット目を1にした値を返す-----*/
+unsigned set(unsigned x, int pos){
+    unsigned px = 1U;                   //1U(0000000000000001)
+    px <<= pos-1;                         //px = px<<pos 1Uを左にposビットだけシフトしたものをpxに代入。
+    return(x|px);                       //論理和でposビット目を1に
+}
+
+//ビットセットは論理和
+
+
+/*------符号無し整数xのposビット目を0にした値を返す-----*/
+unsigned reset(unsigned x, int pos){
+    unsigned px = 1U;                  //~1U(1111111111111110)
+    px <<=  pos-1;//例えば、lrotate(~1U,3)=11111111111110111をpxに代入。
+    px = ~px;
+    return (x&px);                      //論理積でposビット目を0に
+}
+
+//ビットリセットは論理積
+
+/*------符号無し整数をposビット目を反転した値を返す------*/
+unsigned inverse(unsigned x, int pos)
+{
+    unsigned px = 1U;
+    px <<= pos - 1;
+    return (x^px);
+}
+
+//ビット反転は排他的論理和
+
+
+/*--- 符号無し整数xのposビット目からn個のビットを1にした値を返す ---*/
+unsigned set_n(unsigned x, int pos, int n){
+    int i;
+    for(i = pos; i < pos+n; i++){
+        x = (set(x, i));			    // set関数をposを変えつつn回繰り返す
+    }
+    return(x);
+}
+
+
+/*--- 符号無し整数xのposビット目からn個のビットを0にした値を返す ---*/
+unsigned reset_n(unsigned x, int pos, int n){
+    int i;
+    for(i = pos; i < pos+n; i++){
+        x = (reset(x, i));			    // reset関数をposを変えつつn回繰り返す
+    }
+    return(x);
+}
+
+/*--- 符号無し整数xのposビット目からn個のビットを反転した値を返す ---*/
+unsigned inverse_n(unsigned x, int pos, int n){
+    int i;
+    for(i = pos; i < pos+n; i++){
+        x = inverse(x, i);			// inverse関数をposを変えつつn回繰り返す
+    }
+    return(x);
+}
+
+//範囲指定系のプログラムはfor文で。
+
+
+int main(void){
+    unsigned  nx, no, nn;
+    
+    printf("非負の整数を入力してください：");
+    scanf("%u", &nx);
+    printf("何ビット目からですか：");
+    scanf("%u", &no);
+    printf("何ビットですか：");
+    scanf("%u", &nn);
+    
+    printf("\n整数　　　　　　   ＝ ");  print_bits(nx);
+    printf("\nset_nによる値      ＝ ");  print_bits(set_n(nx, no, nn));
+    printf("\nreset_nによる値    ＝ ");  print_bits(reset_n(nx, no, nn));
+    printf("\ninverse_nによる値  ＝ ");  print_bits(inverse_n(nx, no, nn));
+    putchar('\n');
+    
+    return 0;
+}
+
