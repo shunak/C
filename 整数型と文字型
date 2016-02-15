@@ -2,6 +2,7 @@
 #include <limits.h>
 
 /*
+//整数型の表現範囲を表示する
 
 int main(void)
 {
@@ -15,6 +16,7 @@ int main(void)
  }
  */
 
+//char型が符号付きか符号無しかを判定
 /*
 int main(void){
     
