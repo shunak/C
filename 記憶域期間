@@ -1,0 +1,112 @@
+#include <stdio.h>
+
+//暗黙の初期化を確認
+
+/*
+    int fx;//静的記憶域期間（0で初期化される）
+    
+    int main(void){
+        
+        static int sx;//静的記憶域期間（0で初期化される）
+        int        ax;//自動記憶域期間（不定期で初期化される）
+        
+        
+        printf("ax=%d\n",ax);
+        printf("sx=%d\n",sx);
+        printf("fx=%d\n",fx);
+        
+        return  0;
+    }
+    
+    */
+
+
+
+//演習6-12
+//静的記憶域期間が与えられた配列の全要素が0で初期化されることを確認するプログラムを作成せよ。
+
+
+/*
+
+int a[3];//静的記憶域期間かつファイル有効範囲
+
+int main(void){
+
+    static int b[3];//静的記憶域期間かつブロック有効範囲
+    int        c[3];//自動記憶域期間かつブロック有効範囲
+    int i;
+    
+    for (i=0; i<3; i++){
+        printf("a[%d]=%d\n",i,a[i]);
+    }
+    
+    putchar('\n');
+    
+    for (i=0; i<3; i++){
+        printf("b[%d]=%d\n",i,b[i]);
+    }
+    
+    putchar('\n');
+    
+    for (i=0; i<3; i++){
+        printf("c[%d]=%d\n",i,c[i]);
+    }
+    
+    return 0;
+
+}
+
+ */
+
+
+/*
+
+
+#define NUMBER  3
+
+int ax[3] = { 0 };
+int bx[3];
+
+int main(void)
+{
+    int i;
+    static int cx[3] = { 0 };
+    static int dx[3];
+    int ex[3];
+    
+    printf("静的記憶域期間が与えられた配列の全要素が０で初期化されることを確認します。\n"
+           "要素数は%dです。\n"
+           "ax,bxは静的記憶域期間かつファイル有効範囲です。\n"
+           "cx,dxは静的記憶域期間かつブロック有効範囲です。\n"
+           "exは自動記憶域期間かつブロック有効範囲です。\n", NUMBER);
+    
+    for (i = 0; i < NUMBER; i++) {
+        printf("ax[%d] = %d  ", i, ax[i]);
+    }
+    
+    putchar('\n');
+    
+    for (i = 0; i < NUMBER; i++) {
+        printf("bx[%d] = %d\n", i, bx[i]);
+    }
+    
+    
+    for (i = 0; i < NUMBER; i++) {
+        printf("cx[%d] = %d\n", i, cx[i]);
+    }
+    
+    for (i = 0; i < NUMBER; i++) {
+        printf("dx[%d] = %d\n", i, dx[i]);
+    }
+    
+    for (i = 0; i < NUMBER; i++) {
+        printf("ex[%d] = %d\n", i, ex[i]);
+    }
+    
+    
+    return(0);
+}
+
+
+*/
+
